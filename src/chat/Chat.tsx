@@ -36,9 +36,7 @@ function CitationList({ metadata }: { metadata?: ChatMetadata }) {
       <span className="citations-title">引用</span>
       <ul>
         {citations.map((cite, idx) => {
-          const labelBase = cite.issue_id
-            ? `#${cite.issue_id}`
-            : `参照${idx + 1}`
+          const labelBase = cite.title ? `${cite.title}` : `参照${idx + 1}`
           const label = cite.updated_on
             ? `${labelBase} (${cite.updated_on})`
             : labelBase

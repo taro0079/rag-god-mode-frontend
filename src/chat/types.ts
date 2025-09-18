@@ -6,6 +6,7 @@ export interface CitationMeta {
   updated_on?: string
   url?: string
   score?: number
+  title?: string
 }
 
 export interface ChatMetadata {

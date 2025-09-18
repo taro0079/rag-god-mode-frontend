@@ -5,7 +5,8 @@ function App() {
   return (
     <div className="app-shell">
       <div className="center-panel">
-        <h1 className="app-title">God mode</h1>
+        <h1 className="app-title">Rpst God</h1>
+        <p>I'm God of Rpst, knows everything about Rpst.</p>
         <div className="chat-panel">
           <Chat title="AI Chat" />
         </div>
