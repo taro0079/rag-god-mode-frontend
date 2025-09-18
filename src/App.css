@@ -1,8 +1,22 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+html, body, #root { height: 100%; }
+#root { text-align: center; }
+
+.app-shell { min-height: 100%; display: flex; flex-direction: column; padding: 2rem; justify-content: center; }
+.center-panel { width: 100%; max-width: 760px; display: flex; flex-direction: column; gap: 1.5rem; margin: 0 auto; }
+.app-title { font-size: 3rem; line-height: 1; text-align: left; margin: 0 0 .5rem; }
+.chat-panel { box-sizing: border-box; }
+
+body, #root {
+  background: #121212;
+  color: #eee;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen;
+}
+
+main { text-align: left; }
+
+@media (max-width: 640px) {
+  .app-shell { padding: 1rem; }
+  .app-title { font-size: 2.2rem; }
 }
 
 .logo {

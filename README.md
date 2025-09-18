@@ -39,6 +39,48 @@ export default tseslint.config([
 ])
 ```
 
+## AI Chat 機能
+
+アプリには簡易的な AI チャットフォーム (`Chat` コンポーネント) を追加しています。既定では `POST /api/chat` に以下のような JSON を送信します。
+
+```json
+{
+  "messages": [
+    { "role": "user", "content": "こんにちは" }
+  ]
+}
+```
+
+レスポンスは以下いずれかの形式を想定します。
+
+```jsonc
+// シンプル
+{ "reply": "こんにちは！どのようなご用件でしょうか？" }
+
+// または
+{ "content": "こんにちは！" }
+
+// または (OpenAI風の複数配列)
+{ "messages": [ { "role": "assistant", "content": "こんにちは！" } ] }
+```
+
+環境変数 `VITE_API_BASE_URL` を `.env` などで設定すると `fetch(base + endpoint)` の `base` として使われます。
+
+### 開発 Tips
+
+- Enterで送信 / Shift+Enter で改行。
+- 送信中は「停止」ボタンが表示され AbortController で中断可能（ただしサーバ側がストリーミングでない場合はリクエスト中断のみ）。
+- `src/chat/useChat.ts` で履歴送信件数 (`historyLimit`) や system プロンプト注入などを調整できます。
+
+### 今後の拡張アイデア
+
+- レスポンスのストリーミング (ReadableStream) 対応
+- メッセージのローカル永続化 (localStorage / IndexedDB)
+- 会話スレッドの複数管理
+- Markdown / コードブロック表示、コピー機能
+- ユーザー認証とサーバ側ログ保存
+
+
 You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
 ```js
