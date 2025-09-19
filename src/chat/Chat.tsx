@@ -69,8 +69,9 @@ const markdownComponents: Components = {
       {props.children}
     </a>
   ),
-  code: ({ node: _node, inline, className, children, ...props }) => {
-    if (inline) {
+  code: ({ node: _node, className, children, ...props }: any) => {
+    const isInline = props.inline
+    if (isInline) {
       return (
         <code className={className} {...props}>
           {children}
@@ -86,11 +87,7 @@ const markdownComponents: Components = {
 }
 
 export function Chat(props: ChatProps) {
-  const {
-    title = "Chat",
-    placeholder = "メッセージを入力...",
-    height = "560px"
-  } = props
+  const { title = "Chat", placeholder = "メッセージを入力..." } = props
   const { messages, input, setInput, send, loading, error, stop, reset } =
     useChat()
   const listRef = useRef<HTMLDivElement>(null)
