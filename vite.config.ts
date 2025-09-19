@@ -9,6 +9,10 @@ export default defineConfig({
     host: true,
     allowedHosts: [
       "rpst-n8n-test.precs.info"
-    ]
+    ],
+    hmr: {
+      clientPort: process.env.VITE_HMR_PORT ? parseInt(process.env.VITE_HMR_PORT) : 443,
+      host: process.env.VITE_HMR_HOST || "rpst-n8n-test.precs.info"
+    }
   }
 })
